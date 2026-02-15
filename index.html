@@ -1,853 +1,442 @@
 <!DOCTYPE html>
-<!-- KUNAL JAIN CREATING SWAPNIL CHEMICALS LANDING PAGE WEBSITE 08-02-26 -->
+<!-- KUNAL JAIN CREATING SWAPNIL CHEMICALS LANDING PAGE WEBSITE 15-02-26 -->
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Swapnil Chemicals</title>
-      <!-- Fonts -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
-      <!-- CSS USED FROM HERE  -->
-      <style>
-         :root{
-         --bg0:#060814;
-         --bg1:#0A1022;
-         --glass: rgba(255,255,255,.07);
-         --glass2: rgba(255,255,255,.10);
-         --stroke: rgba(255,255,255,.14);
-         --text: rgba(255,255,255,.93);
-         --muted: rgba(255,255,255,.72);
-         --shadow: 0 22px 70px rgba(0,0,0,.50);
-         --shadow2: 0 12px 34px rgba(0,0,0,.32);
-         --r14: 14px;
-         --r18: 18px;
-         --r24: 24px;
-         --a:#5B7CFF;
-         --b:#22D3EE;
-         --c:#A78BFA;
-         --good:#34D399;
-         --warn:#FBBF24;
-         --danger:#FB7185;
-         /* ✅ anchor offset (auto updated by JS) */
-         --nav-offset: 92px;
-         }
-         *{box-sizing:border-box}
-         html{
-         scroll-behavior:smooth;
-         scroll-padding-top: var(--nav-offset);
-         }
-         body{
-         margin:0;
-         font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-         color: var(--text);
-         background:
-         radial-gradient(1200px 640px at 12% 16%, rgba(91,124,255,.30), transparent 60%),
-         radial-gradient(1100px 760px at 86% 22%, rgba(34,211,238,.20), transparent 58%),
-         radial-gradient(900px 720px at 70% 90%, rgba(167,139,250,.18), transparent 60%),
-         linear-gradient(180deg, var(--bg0), var(--bg1));
-         overflow-x:hidden;
-         }
-         /* ✅ FIX: anchor landing for sticky nav */
-         #products, #contact { scroll-margin-top: var(--nav-offset); }
-         /* subtle animated aura */
-         .aura{
-         position:fixed;
-         inset:-240px;
-         pointer-events:none;
-         background:
-         radial-gradient(520px 260px at 20% 30%, rgba(34,211,238,.10), transparent 70%),
-         radial-gradient(520px 260px at 80% 40%, rgba(91,124,255,.10), transparent 70%),
-         radial-gradient(520px 260px at 55% 85%, rgba(167,139,250,.10), transparent 70%);
-         filter: blur(22px);
-         opacity:.95;
-         animation: floaty 14s ease-in-out infinite alternate;
-         }
-         @keyframes floaty{
-         from{ transform: translate3d(-12px,-12px,0) scale(1); }
-         to{ transform: translate3d(12px,12px,0) scale(1.05); }
-         }
-         /* .wrap{
-         width:min(1240px, 92vw);
-         margin:0 auto;
-         position:relative;
-         z-index:1;
-         } */
-         .wrap {
-         width: 100%; /* Change this line from 80% to 100% */
-         margin: 0 auto;
-         position: relative;
-         z-index: 1;
-         }
-         /* Top strip */
-         .top-strip{
-         display:flex;
-         gap:10px;
-         flex-wrap:wrap;
-         justify-content:center;
-         align-items:center;
-         padding: 10px 12px;
-         border-bottom: 1px solid rgba(255,255,255,.08);
-         background: rgba(0,0,0,.22);
-         backdrop-filter: blur(12px);
-         -webkit-backdrop-filter: blur(12px);
-         font-size: 13px;
-         color: var(--muted);
-         }
-         .chip{
-         display:inline-flex;
-         align-items:center;
-         gap:10px;
-         padding: 8px 12px;
-         border-radius: 999px;
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(255,255,255,.06);
-         }
-         .dot{
-         width:9px;height:9px;border-radius:999px;
-         background: linear-gradient(90deg, var(--b), var(--a));
-         box-shadow: 0 0 0 6px rgba(34,211,238,.10);
-         }
-         /* Nav */
-         .nav{
-         position: sticky;
-         top: 0;
-         z-index: 50;
-         background: rgba(6,8,20,.58);
-         backdrop-filter: blur(16px);
-         -webkit-backdrop-filter: blur(16px);
-         border-bottom: 1px solid rgba(255,255,255,.10);
-         }
-         .nav-inner{
-         display:flex;
-         justify-content:space-between;
-         align-items:center;
-         padding: 12px 0;
-         gap:12px;
-         }
-         .brand{
-         display:flex;
-         align-items:center;
-         gap: 12px;
-         min-width: 250px;
-         }
-         .logo{
-         width:44px;height:44px;border-radius: 12px;
-         object-fit: cover;
-         border: 1px solid rgba(255,255,255,.16);
-         background: rgba(255,255,255,.06);
-         box-shadow: 0 14px 30px rgba(0,0,0,.22);
-         }
-         .brand-title{
-         display:flex;
-         flex-direction:column;
-         line-height:1.05;
-         }
-         .brand-title b{font-weight:800; letter-spacing:.2px;}
-         .brand-title small{color: var(--muted); font-size: 12px; margin-top:2px}
-         .nav-links{
-         display:flex;
-         gap: 10px;
-         flex-wrap:wrap;
-         justify-content:flex-end;
-         }
-         .btn, .link{
-         display:inline-flex;
-         align-items:center;
-         justify-content:center;
-         gap:10px;
-         text-decoration:none;
-         color: rgba(255,255,255,.86);
-         font-weight: 700;
-         font-size: 13px;
-         padding: 10px 12px;
-         border-radius: 12px;
-         border: 1px solid rgba(255,255,255,.10);
-         background: rgba(255,255,255,.04);
-         transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
-         cursor:pointer;
-         user-select:none;
-         }
-         .btn:hover, .link:hover{
-         transform: translateY(-2px);
-         background: rgba(255,255,255,.08);
-         border-color: rgba(255,255,255,.18);
-         }
-         .btn.primary, .link.primary{
-         border:none;
-         color:#06101a;
-         background: linear-gradient(90deg, var(--a), var(--b));
-         box-shadow: 0 12px 30px rgba(34,211,238,.16);
-         }
-         .btn.ghost{
-         background: rgba(0,0,0,.18);
-         border: 1px solid rgba(255,255,255,.14);
-         }
-         /* Hero */
-         header{ padding: 22px 0 10px; }
-         .hero{
-         border-radius: var(--r24);
-         border: 1px solid rgba(255,255,255,.12);
-         background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
-         box-shadow: var(--shadow);
-         overflow:hidden;
-         position:relative;
-         }
-         .hero::before{
-         content:"";
-         position:absolute;
-         inset:-2px;
-         background:
-         radial-gradient(950px 320px at 12% 0%, rgba(34,211,238,.22), transparent 65%),
-         radial-gradient(950px 320px at 88% 0%, rgba(91,124,255,.22), transparent 65%);
-         pointer-events:none;
-         }
-         .hero-inner{
-         position:relative;
-         z-index:1;
-         display:grid;
-         grid-template-columns: 1.15fr .85fr;
-         gap: 18px;
-         padding: 26px;
-         align-items:stretch;
-         }
-         .hero h1{
-         font-family: "DM Serif Display", serif;
-         font-weight: 400;
-         margin: 4px 0 10px;
-         font-size: clamp(34px, 4.4vw, 54px);
-         letter-spacing:.3px;
-         }
-         .hero p{
-         margin: 0 0 16px;
-         color: rgba(255,255,255,.85);
-         font-size: 15px;
-         line-height: 1.7;
-         }
-         .hero-actions{
-         display:flex;
-         gap:10px;
-         flex-wrap:wrap;
-         margin-top: 8px;
-         }
-         .kpis{
-         display:grid;
-         grid-template-columns: repeat(3, minmax(0,1fr));
-         gap: 10px;
-         margin-top: 14px;
-         }
-         .kpi{
-         padding: 12px;
-         border-radius: 14px;
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(0,0,0,.20);
-         box-shadow: var(--shadow2);
-         }
-         .kpi b{display:block; font-size: 14px}
-         .kpi span{color: var(--muted); font-size: 12px}
-         .info{
-         padding: 16px;
-         border-radius: var(--r18);
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(0,0,0,.22);
-         box-shadow: var(--shadow2);
-         }
-         .info h3{
-         margin: 0 0 12px;
-         font-size: 14px;
-         letter-spacing: .2px;
-         color: rgba(255,255,255,.90);
-         }
-         .info-row{
-         display:flex;
-         justify-content:space-between;
-         gap: 12px;
-         padding: 10px 10px;
-         border-radius: 12px;
-         border: 1px solid rgba(255,255,255,.10);
-         background: rgba(255,255,255,.05);
-         font-size: 13px;
-         color: var(--muted);
-         margin-bottom: 10px;
-         }
-         .info-row b{color: rgba(255,255,255,.92)}
-         .info-row:last-child{margin-bottom:0}
-         /* Sections */
-         main{ padding: 14px 0 60px; }
-         .section{ margin-top: 18px; }
-         .section-head{
-         display:flex;
-         justify-content:space-between;
-         align-items:flex-end;
-         gap: 12px;
-         margin: 16px 0 12px;
-         }
-         .section-head h2{
-         margin:0;
-         font-size: 20px;
-         letter-spacing:.2px;
-         }
-         .section-head p{
-         margin:0;
-         color: var(--muted);
-         font-size: 13px;
-         }
-         /* Tools bar */
-         .tools{
-         display:flex;
-         gap: 10px;
-         flex-wrap:wrap;
-         align-items:center;
-         justify-content:space-between;
-         margin: 12px 0 16px;
-         padding: 12px;
-         border-radius: var(--r18);
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(255,255,255,.05);
-         }
-         .search{
-         display:flex;
-         align-items:center;
-         gap:10px;
-         flex: 1 1 320px;
-         }
-         .search input{
-         width:100%;
-         padding: 11px 12px;
-         border-radius: 12px;
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(0,0,0,.18);
-         color: var(--text);
-         outline:none;
-         font-weight: 600;
-         }
-         .search input::placeholder{ color: rgba(255,255,255,.55); font-weight:600; }
-         .filters{
-         display:flex;
-         gap:8px;
-         flex-wrap:wrap;
-         justify-content:flex-end;
-         flex: 1 1 320px;
-         }
-         .pill{
-         padding: 9px 12px;
-         border-radius: 999px;
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(0,0,0,.16);
-         color: rgba(255,255,255,.84);
-         font-weight: 800;
-         font-size: 12px;
-         cursor:pointer;
-         transition: transform .18s ease, background .18s ease, border-color .18s ease;
-         }
-         .pill:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.20); }
-         .pill.active{
-         border:none;
-         color:#06101a;
-         background: linear-gradient(90deg, var(--a), var(--b));
-         }
-         /* Grid cards */
-         .grid{
-         display:grid;
-         grid-template-columns: repeat(12, 1fr);
-         gap: 18px;
-         }
-         .card{
-         grid-column: span 3;
-         border-radius: var(--r18);
-         border: 1px solid rgba(255,255,255,.12);
-         background: rgba(255,255,255,.06);
-         box-shadow: 0 14px 36px rgba(0,0,0,.25);
-         overflow:hidden;
-         position:relative;
-         transition: transform .2s ease, border-color .2s ease, background .2s ease;
-         }
-         .card:hover{
-         transform: translateY(-7px);
-         border-color: rgba(255,255,255,.22);
-         background: rgba(255,255,255,.08);
-         }
-         .thumb{
-         width:100%;
-         aspect-ratio: 4/3;
-         object-fit: cover;
-         display:block;
-         background: rgba(255,255,255,.05);
-         transform: scale(1.02);
-         transition: transform .35s ease;
-         }
-         .card:hover .thumb{ transform: scale(1.08); }
-         .badge{
-         position:absolute;
-         top: 12px;
-         left: 12px;
-         padding: 7px 10px;
-         border-radius: 999px;
-         font-size: 12px;
-         font-weight: 900;
-         color: rgba(255,255,255,.92);
-         border: 1px solid rgba(255,255,255,.16);
-         background: rgba(0,0,0,.22);
-         backdrop-filter: blur(10px);
-         -webkit-backdrop-filter: blur(10px);
-         }
-         .badge.good{ box-shadow: 0 0 0 6px rgba(52,211,153,.10); }
-         .badge.hot{ box-shadow: 0 0 0 6px rgba(251,191,36,.10); }
-         .card-body{ padding: 14px 14px 16px; }
-         .card-body h3{
-         margin: 2px 0 8px;
-         font-size: 15px;
-         letter-spacing: .2px;
-         font-weight: 900;
-         }
-         .meta{
-         display:flex;
-         align-items:center;
-         justify-content:space-between;
-         gap: 10px;
-         color: var(--muted);
-         font-size: 13px;
-         }
-         .price{
-         font-weight: 900;
-         color: rgba(255,255,255,.92);
-         padding: 6px 10px;
-         border-radius: 999px;
-         border: 1px solid rgba(255,255,255,.14);
-         background: rgba(0,0,0,.18);
-         white-space:nowrap;
-         }
-         /* Modal */
-         .modal{
-         position: fixed;
-         inset: 0;
-         display:none;
-         align-items:center;
-         justify-content:center;
-         padding: 18px;
-         z-index: 200;
-         background: rgba(0,0,0,.55);
-         backdrop-filter: blur(10px);
-         -webkit-backdrop-filter: blur(10px);
-         }
-         .modal.open{ display:flex; }
-         .modal-card{
-         width: min(960px, 96vw);
-         border-radius: var(--r24);
-         border: 1px solid rgba(255,255,255,.14);
-         background: rgba(10,16,34,.85);
-         box-shadow: var(--shadow);
-         overflow:hidden;
-         display:grid;
-         grid-template-columns: 1fr 1fr;
-         }
-         .modal-img{
-         width:100%;
-         height:100%;
-         object-fit: cover;
-         background: rgba(255,255,255,.06);
-         min-height: 320px;
-         }
-         .modal-body{
-         padding: 18px;
-         display:flex;
-         flex-direction:column;
-         gap: 10px;
-         }
-         .modal-body h3{
-         margin: 0;
-         font-size: 22px;
-         letter-spacing:.2px;
-         }
-         .modal-body p{
-         margin:0;
-         color: var(--muted);
-         line-height:1.65;
-         font-size: 14px;
-         }
-         .modal-row{
-         display:flex;
-         gap: 10px;
-         flex-wrap:wrap;
-         align-items:center;
-         margin-top: 6px;
-         }
-         .close{
-         margin-left:auto;
-         border-radius: 12px;
-         padding: 10px 12px;
-         border: 1px solid rgba(255,255,255,.14);
-         background: rgba(255,255,255,.06);
-         color: rgba(255,255,255,.90);
-         font-weight: 900;
-         cursor:pointer;
-         }
-         /* Footer */
-         footer{
-         border-top: 1px solid rgba(255,255,255,.10);
-         color: var(--muted);
-         text-align:center;
-         padding: 18px 0 26px;
-         font-size: 13px;
-         }
-         /* Responsive */
-         @media (max-width: 980px){
-         .hero-inner{ grid-template-columns: 1fr; }
-         .kpis{ grid-template-columns: 1fr; }
-         .card{ grid-column: span 6; }
-         .modal-card{ grid-template-columns: 1fr; }
-         }
-         @media (max-width: 560px){
-         .brand{min-width:auto}
-         .nav-links{justify-content:flex-start}
-         .card{ grid-column: span 12; }
-         .tools{ gap: 12px; }
-         .filters{ justify-content:flex-start; }
-         }
-      </style>
-   </head>
-   <!-- HTML USED FROM HERE  -->
-   <body>
-      <div class="aura"></div>
-      <div class="top-strip">
-         <!-- <span class="chip"><span class="dot"></span> Manufacturers & marketers of cleaning products</span> -->
-         <span class="chip"><span class="dot"></span> Manufacturers & marketers of automobile cleaning products</span>
-         <span class="chip">Jaipur • Bulk & Retail</span>
-         <span class="chip">Quality • Value • Consistency</span>
-      </div>
-      <!-- Sticky Navigation -->
-      <div class="nav">
-         <div class="wrap nav-inner">
-            <div class="brand">
-               <!-- ✅ Use relative path (not D:\) -->
-               <img class="logo" src="SC Logo.jpg" alt="Swapnil Chemicals Logo">
-               <div class="brand-title">
-                  <b>Swapnil Chemicals</b>
-                  <!-- <small>48 Govind Nagar, Manyawas, Jaipur</small> -->
-               </div>
-            </div>
-            <div class="nav-links">
-               <a class="link" href="#products">Products</a>
-               <a class="link" href="#contact">Contact</a>
-               <a class="link primary" href="tel:+919352470085">Call Now</a>
-            </div>
-         </div>
-      </div>
-      <!-- HERO -->
-      <header class="wrap">
-         <section class="hero">
-            <div class="hero-inner">
-               <div>
-                  <!-- <h1>Cleaning that feels premium.</h1>
-                     <p>
-                       Swapnil Chemicals manufactures and markets cleaning products with a focus on
-                       performance, shine, and value. Perfect for vehicles, homes, shops and bulk supply.
-                     </p> -->
-                  <div class="hero-actions">
-                     <a class="btn primary" href="#products">Explore Products</a>
-                     <a class="btn ghost" href="https://wa.me/919352470085" target="_blank" rel="noopener">WhatsApp</a>
-                  </div>
-                  <div class="kpis">
-                     <div class="kpi"><b>Reliable Quality</b><span>Consistent formulation</span></div>
-                     <div class="kpi"><b>Competitive Pricing</b><span>Best value range</span></div>
-                     <div class="kpi"><b>Bulk Orders</b><span>Business supply support</span></div>
-                  </div>
-               </div>
-               <!-- Contact section -->
-               <aside class="info" id="contact">
-                  <h3>Business Details</h3>
-                  <div class="info-row"><span>Proprietor</span><b>Gajendra Jain</b></div>
-                  <div class="info-row">
-                     <span>Phone</span><b><a href="tel:9352470085" style="color: inherit; text-decoration: none;">9352470085</a></b>
-                  </div>
-                  <!-- <div class="info-row"><span>Alt Phone</span><b>9024598298</b></div> -->
-                  <div class="info-row"><span>GST No.</span><b>08CIJPS1734A1ZE</b></div>
-                  <!-- <div class="info-row"><span>Email</span><b>swapnilchemicals10@gmail.com</b></div> -->
-                  <div class="info-row"><span>Email</span><b><a href="https://mail.google.com/mail/?view=cm&fs=1&to=swapnilchemicals10@gmail.com"
-                     target="_blank"style="color: inherit; text-decoration: none;">swapnilchemicals10@gmail.com</a></b></div>
-                  <div class="info-row"><span>MSME</span><b>MSME/2020/6194</b></div>
-                  <div class="info-row"><span>Udyam</span><b>UDYAM-RJ-17-0022468</b></div>
-                  <div class="info-row"><span>BRN</span><b>8005220072000968</b></div>
-               </aside>
-            </div>
-         </section>
-      </header>
-      <!-- PRODUCTS -->
-      <main class="wrap">
-         <section class="section" id="products">
-            <div class="section-head">
-               <div>
-                  <h2>Our Products</h2>
-                  <!-- <p>Search + filter + product popup</p> -->
-               </div>
-               <!-- <p>Prices in INR</p> -->
-            </div>
-            <div class="tools">
-               <div class="search">
-                  <input id="searchInput" type="text" placeholder="Search Products" />
-               </div>
-               <div class="filters" aria-label="Category filters">
-                  <button class="pill active" data-filter="all">All</button>
-                  <button class="pill" data-filter="car">Car Care</button>
-                  <button class="pill" data-filter="home">Home Care</button>
-               </div>
-            </div>
-            <div class="grid" id="productGrid">
-               <!-- Dashboard Polish -->
-               <article class="card" data-name="dashboard polish" data-category="car" data-price="180/Lt" data-desc="Gives shine and protection to dashboards and interior surfaces.">
-                  <span class="badge good">Best Seller</span>
-                  <img class="thumb" src="Dashboard Polish.jpg" alt="Dashboard Polish">
-                  <div class="card-body">
-                     <h3>Dashboard Polish</h3>
-                     <div class="meta">
-                        <span>Shine & protection</span>
-                        <span class="price">Rs 180/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Tyre Polish -->
-               <article class="card" data-name="tyre polish" data-category="car" data-price="110/Lt" data-desc="Deep black finish with long-lasting gloss for tyres.">
-                  <span class="badge hot">Popular</span>
-                  <img class="thumb" src="Tyre Polish.jpg" alt="Tyre Polish">
-                  <div class="card-body">
-                     <h3>Tyre Polish</h3>
-                     <div class="meta">
-                        <span>Deep black finish</span>
-                        <span class="price">Rs 110/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Car Foaming Wash -->
-               <article class="card" data-name="car foaming wash" data-category="car" data-price="50/Lt" data-desc="Rich foam action that lifts dirt gently and cleans effectively.">
-                  <img class="thumb" src="Car Foaming Wash.jpg" alt="Car Foaming Wash">
-                  <div class="card-body">
-                     <h3>Car Foaming Wash</h3>
-                     <div class="meta">
-                        <span>Rich foam action</span>
-                        <span class="price">Rs 50/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Glass Cleaner -->
-               <article class="card" data-name="glass cleaner" data-category="car" data-price="60/Lt" data-desc="Streak-free glass cleaner that removes dirt, dust, and fingerprints easily.">
-                  <img class="thumb" src="Glass Cleaner.jpg" alt="Glass Cleaner">
-                  <div class="card-body">
-                     <h3>Glass Cleaner</h3>
-                     <div class="meta">
-                        <span>Streak-free shine</span>
-                        <span class="price">Rs 60/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Interior Cleaner -->
-               <article class="card" data-name="interior cleaner" data-category="cleaning" data-price="110/Lt" data-desc="Specially formulated for thorough interior cleaning and conditioning.">
-                   <img class="thumb" src="Interior Cleaner.jpg" alt="Interior Cleaner">
-                  <div class="card-body">
-                     <h3>Interior Cleaner</h3>
-                     <div class="meta">
-                        <span>Deep Interior Cleaning</span>
-                        <span class="price">Rs 110/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Handcare -->
-               <!-- <article class="card" data-name="handcare hand wash" data-category="home" data-price="100" data-desc="Gentle hand wash for daily use. Fresh and effective cleaning.">
-                  <img class="thumb" src="Handcare.jpg" alt="Handcare">
-                  <div class="card-body">
-                    <h3>Handcare</h3>
-                    <div class="meta">
-                      <span>Gentle clean</span>
-                      <span class="price">Rs 100/Lt</span>
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swapnil Chemicals</title>
+    <meta name="description" content="Swapnil Chemicals - Leading manufacturers and marketers of automobile cleaning products in Jaipur. Bulk and retail suppliers of dashboard polish, tyre polish, car foaming wash, and more.">
+    <meta name="keywords" content="automobile cleaning products, car cleaning, dashboard polish, tyre polish, car wash, glass cleaner, Jaipur manufacturer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {   
+                    colors: {
+                        primary: "#1e40af",
+                        secondary: "#1e3a8a",
+                        accent: "#f59e0b"
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800">
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <!-- <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-industry text-white text-xl"></i>
+                    </div> -->
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden">
+    <img src="SC Logo.jpg" alt="SC Logo" class="w-full h-full object-cover">
+</div>
+
+                    <div>
+                        <h1 class="text-2xl font-bold text-blue-900">Swapnil Chemicals</h1>
+                        <p class="text-sm text-gray-600">Manufacturers & marketers of automobile cleaning products</p>
                     </div>
-                  </div>
-                  </article> -->
-               <!-- Dishwash -->
-               <article class="card" data-name="dishwash" data-category="home" data-price="80/Lt" data-desc="Grease cutting dishwash formula for utensils and kitchen cleaning.">
-                   <img class="thumb" src="Dishwash.jpg" alt="Dishwash">
-                  <div class="card-body">
-                     <h3>Dishwash</h3>
-                     <div class="meta">
-                        <span>Grease cutting</span>
-                        <span class="price">Rs 80/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Detergent -->
-               <article class="card" data-name="detergent" data-category="home" data-price="110/Lt" data-desc="Strong wash detergent for effective cleaning.">
-                   <img class="thumb" src="Detergent.jpg" alt="Detergent">
-                  <div class="card-body">
-                     <h3>Detergent</h3>
-                     <div class="meta">
-                        <span>Strong wash</span>
-                        <span class="price">Rs 110/Lt</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Foaming Gun -->
-               <article class="card" data-name="foaming_gun" data-category="car" data-price="1600" data-desc="High-pressure foam sprayer for deep and uniform cleaning">
-                   <img class="thumb" src="Foaming Gun.jpg" alt="Foaming Gun">
-                  <div class="card-body">
-                     <h3>Foaming Gun</h3>
-                     <div class="meta">
-                        <span>High Pressure Foaming Gun</span>
-                        <span class="price">Rs 1600</span>
-                     </div>
-                  </div>
-               </article>
-               <!-- Micro Towel -->
-               <article class="card" data-name="micro_towel" data-category="car" data-price="60/80/120" data-desc="Ultra-soft microfiber towel for scratch-free wiping and polishing">
-                  <img class="thumb" src="Micro Towel.jpg" alt="Micro Towel">
-                  <div class="card-body">
-                     <h3>Micro Towel</h3>
-                     <div class="meta">
-                        <span>Ultra soft Micro Towel</span>
-                        <span class="price">Rs 60/80/120</span>
-                     </div>
-                  </div>
-               </article>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-700"><i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>Jaipur • Bulk & Retail</p>
+                </div>
             </div>
-         </section>
-      </main>
-      <!-- <footer>-->
-      <!-- 13-02-26 -->
-      <footer style="background-color: #0D1A26; color: #ffffff; padding: 30px 0;">
-         <div class="wrap" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <h2 style="margin: 10px 0;">Contact Us</h2>
-            <!-- Phone -->
-            <p style="margin: 5px 0;">
-               Phone: 
-               <a href="tel:9352470085" style="color: #ffffff; text-decoration: none;">
-               9352470085
-               </a>
-            </p>
-            <!-- Email -->
-            <p style="margin: 5px 0;">
-               Email: 
-               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=swapnilchemicals10@gmail.com"
-                  target="_blank"
-                  style="color: #ffffff; text-decoration: none;">
-               swapnilchemicals10@gmail.com
-               </a>
-            </p>
-            <!-- Google Pay Payment -->
-            <p style="margin: 20px 0; width: 50%;">
-               <a href="upi://pay?pa=boism-9352470085@boi&pn=Swapnil%20Chemicals&cu=INR"
-                  style="display: block; width: fit-content; margin-left: auto;">
-               <img class="thumb" src="Google Pay Logo.jpg" alt="Google Pay" alt="Pay with Google Pay" style="height: 35px; cursor: pointer;">
-               </a>
-            </p>
-            <p style="margin: 10px 0;">
-               &copy; 2026 Swapnil Chemicals. All rights reserved.
-            </p>
-         </div>
-      </footer>
-      <!-- Modal -->
-      <div class="modal" id="modal" aria-hidden="true">
-         <div class="modal-card" role="dialog" aria-modal="true" aria-label="Product details">
-            <img class="modal-img" id="modalImg" src="" alt="">
-            <div class="modal-body">
-               <div style="display:flex; gap:10px; align-items:center;">
-                  <h3 id="modalTitle">Product</h3>
-                  <button class="close" id="modalClose" type="button">Close</button>
-               </div>
-               <p id="modalDesc"></p>
-               <div class="modal-row">
-                  <span class="price" id="modalPrice">Rs 0</span>
-                  <a class="btn primary" id="modalCall" href="tel:9352470085">Call to Order</a>
-                  <a class="btn ghost" id="modalWA" href="https://wa.me/919352470085" target="_blank" rel="noopener">WhatsApp</a>
-               </div>
-               <p style="margin-top:6px; font-size:12px; color:rgba(255,255,255,.62);">
-               </p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Premium Automobile Cleaning Solutions</h2>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">Manufacturing excellence since 2020. Trusted by automotive professionals across Rajasthan.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#products" class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        <i class="fas fa-boxes mr-2"></i>View Products
+                    </a>
+                    <a href="#contact" class="bg-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition duration-300">
+                        <i class="fas fa-phone-alt mr-2"></i>Contact Now
+                    </a>
+                </div>
             </div>
-         </div>
-      </div>
-      <!-- JS USED FROM HERE  --> 
-      <script>
-         // ✅ Set nav offset dynamically (anchor clicks perfect)
-         (function () {
-           function setNavOffset(){
-             const nav = document.querySelector('.nav');
-             if(!nav) return;
-             const h = Math.ceil(nav.getBoundingClientRect().height);
-             document.documentElement.style.setProperty('--nav-offset', (h + 16) + 'px');
-           }
-           window.addEventListener('load', setNavOffset);
-           window.addEventListener('resize', setNavOffset);
-           if (document.fonts && document.fonts.ready) {
-             document.fonts.ready.then(setNavOffset).catch(()=>{});
-           }
-         })();
-         
-         // Products: filter + search
-         const searchInput = document.getElementById('searchInput');
-         const pills = Array.from(document.querySelectorAll('.pill'));
-         const cards = Array.from(document.querySelectorAll('#productGrid .card'));
-         
-         let activeFilter = "all";
-         
-         function applyFilters(){
-           const q = (searchInput.value || "").trim().toLowerCase();
-           cards.forEach(card => {
-             const name = (card.dataset.name || "").toLowerCase();
-             const cat  = (card.dataset.category || "all").toLowerCase();
-         
-             const matchText = !q || name.includes(q);
-             const matchCat  = (activeFilter === "all") || (cat === activeFilter);
-         
-             card.style.display = (matchText && matchCat) ? "" : "none";
-           });
-         }
-         
-         pills.forEach(p => {
-           p.addEventListener('click', () => {
-             pills.forEach(x => x.classList.remove('active'));
-             p.classList.add('active');
-             activeFilter = p.dataset.filter;
-             applyFilters();
-           });
-         });
-         
-         searchInput.addEventListener('input', applyFilters);
-         
-         // Modal popup
-         const modal = document.getElementById('modal');
-         const modalImg = document.getElementById('modalImg');
-         const modalTitle = document.getElementById('modalTitle');
-         const modalDesc = document.getElementById('modalDesc');
-         const modalPrice = document.getElementById('modalPrice');
-         const modalClose = document.getElementById('modalClose');
-         
-         function openModal(card){
-           const img = card.querySelector('img');
-           modalImg.src = img ? img.src : "";
-           modalImg.alt = img ? img.alt : "Product";
-           modalTitle.textContent = card.querySelector('h3')?.textContent || "Product";
-           modalDesc.textContent = card.dataset.desc || "Product details coming soon.";
-           modalPrice.textContent = "Rs " + (card.dataset.price || "0");
-         
-           modal.classList.add('open');
-           modal.setAttribute('aria-hidden', 'false');
-           document.body.style.overflow = "hidden";
-         }
-         
-         function closeModal(){
-           modal.classList.remove('open');
-           modal.setAttribute('aria-hidden', 'true');
-           document.body.style.overflow = "";
-         }
-         
-         cards.forEach(card => {
-           card.addEventListener('click', () => openModal(card));
-         });
-         
-         modalClose.addEventListener('click', closeModal);
-         modal.addEventListener('click', (e) => {
-           if(e.target === modal) closeModal();
-         });
-         window.addEventListener('keydown', (e) => {
-           if(e.key === "Escape") closeModal();
-         });
-      </script>
-   </body>
+        </div>
+    </section>
+
+    <!-- Business Details Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-10">Business Details</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Proprietor Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-tie text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Proprietor</h3>
+                            <p class="text-blue-900 font-bold text-xl">Gajendra Jain</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-phone-alt text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Phone</h3>
+                            <p class="text-blue-900 font-bold text-xl">9352470085</p>
+                            <p class="text-blue-900 font-bold text-xl">9024598298</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GST Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-file-invoice-dollar text-purple-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">GST No.</h3>
+                            <p class="text-blue-900 font-bold">08CIJPS1734A1ZE</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-red-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Email</h3>
+                            <p class="text-blue-900 font-bold">swapnilchemicals10@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MSME Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-award text-yellow-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">MSME</h3>
+                            <p class="text-blue-900 font-bold">MSME/2020/6194</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udyam Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-award text-yellow-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Udyam</h3>
+                            <p class="text-blue-900 font-bold">Udyam: UDYAM-RJ-17-0022468</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BRN Card -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-indigo-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">BRN</h3>
+                            <p class="text-blue-900 font-bold">8005220072000968</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Our Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Product cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">Contact Us</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Contact Info -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
+                            <div class="contact-icon w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">Phone</h3>
+                                <p class="text-blue-900 font-bold text-xl">9352470085</p>
+                                <p class="text-blue-900 font-bold text-xl">9024598298</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
+                            <div class="contact-icon w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                                <i class="fab fa-google-pay text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">Google Pay</h3>
+                                <a href="https://gpay.app.goo.gl/" class="text-blue-900 font-bold hover:text-blue-700 transition duration-300">
+                                    Pay to 9352470085
+                                </a>
+                                <p class="text-gray-600 text-sm mt-1">Scan QR or click to pay via Google Pay</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-red-50 rounded-lg">
+                            <div class="contact-icon w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg text-gray-800">Email</h3>
+                                <a href="mailto:swapnilchemicals10@gmail.com" class="text-blue-900 font-bold hover:text-blue-700 transition duration-300">
+                                    swapnilchemicals10@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Send us a message</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Swapnil Chemicals</h3>
+                    <p class="text-blue-200">Manufacturers & marketers of automobile cleaning products</p>
+                    <p class="text-blue-200 mt-1">Jaipur • Bulk & Retail</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="tel:9352470085" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                        <i class="fas fa-phone-alt"></i>
+                    </a>
+                    <a href="mailto:swapnilchemicals10@gmail.com" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://gpay.app.goo.gl/" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                        <i class="fab fa-google-pay"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-6 text-center">
+                <p class="text-blue-200">© 2026 Swapnil Chemicals. All rights reserved.</p>
+                <p class="text-blue-300 text-sm mt-2">MSME Registered • GST Certified • Quality Assured Products</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Define products data
+        const products = [
+            { "id": 1, "name": "Dashboard Polish", 
+        "image": "D:\SC -SBP/SC Images/12-02-26/Dashboard Polish.jpg", 
+        "description": "Premium dashboard polish for long-lasting shine","price": 180, "unit": "Lt"},
+            { "id": 2, "name": "Tyre Polish", "image": "Tyre Polish.jpg", "description": "High-gloss tyre polish for enhanced appearance","price": 110, "unit": "Lt"},
+            { "id": 3, "name": "Car Foaming Wash", "image": "Car Foaming Wash.jpg","description": "Advanced foaming wash for thorough cleaning","price": 50, "unit": "Lt"},
+            { "id": 4, "name": "Glass Cleaner", "image": "Glass Cleaner.jpg","description": "Streak-free glass cleaner for crystal clear visibility","price": 60, "unit": "Lt"},
+            { "id": 5, "name": "Interior Cleaner", "image": "Interior Cleaner.jpg","description": "Effective interior cleaner for all surfaces","price": 110, "unit": "Lt"},
+            { "id": 6, "name": "Dishwash", "image": "Dishwash.jpg", "description": "Powerful dishwash liquid for tough grease","price": 80, "unit": "Lt"},
+            { "id": 7, "name": "Detergent", "image": "Detergent.jpg", "description": "High-quality detergent for various cleaning needs","price": 110, "unit": "Lt"},
+            { "id": 8, "name": "Foaming Gun", "image": "Foaming Gun.jpg","description": "Professional foaming gun for car wash","price": 1600, "unit": "per piece"},
+            { "id": 9, "name": "Micro Towel", "image": "Micro Towel.jpg","description": "Ultra soft Micro Towel","price": 120, "unit": "per piece"},
+            
+        ];
+
+        // Function to generate product cards
+        // function generateProductCards() {
+        //     const productsContainer = document.querySelector('#products .grid');
+        //     productsContainer.innerHTML = '';
+            
+        //     products.forEach(product => {
+        //         const productCard = document.createElement('div');
+        //         productCard.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300';
+        //         productCard.innerHTML = `
+        //             <div class="relative overflow-hidden">
+        //                 <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy">
+        //                 <div class="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+        //                     <i class="fas fa-star mr-1"></i>Premium
+        //                 </div>
+        //             </div>
+        //             <div class="p-6">
+        //                 <h3 class="text-xl font-bold text-gray-800 mb-2">${product.name}</h3>
+        //                 <p class="text-gray-600 mb-4">${product.description}</p>
+        //                 <button onclick="inquireProduct('${product.name}')" class="w-full bg-blue-50 text-blue-700 py-2 rounded-lg font-semibold hover:bg-blue-100 transition duration-300">
+        //                     <i class="fas fa-info-circle mr-2"></i>Inquire Now
+        //                 </button>
+        //             </div>
+        //         `;
+        //         productsContainer.appendChild(productCard);
+        //     });
+        // }
+
+
+        // CUSTOM K 14-02-26
+            function generateProductCards() {
+    const productsContainer = document.querySelector('#products .grid');
+    productsContainer.innerHTML = '';
+    
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300';
+        
+        productCard.innerHTML = `
+            <div class="relative overflow-hidden">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover" loading="lazy">
+                <div class="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <i class="fas fa-star mr-1"></i>Premium
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">${product.name}</h3>
+                <p class="text-gray-600 mb-2">${product.description}</p>
+
+                <!-- PRICE ADDED HERE CUSTOM K 14-02-26 FOR PRICE LIKE 180/Lt-->
+                <p class="text-lg font-semibold text-blue-700 mb-4">
+                    ₹ ${product.price}/${product.unit}
+                </p>
+
+            </div>
+        `;
+        productsContainer.appendChild(productCard);
+    });
+}
+
+
+
+
+        // Function to handle product inquiry
+        function inquireProduct(productName) {
+            const name = prompt("Enter your name:");
+            if (name) {
+                const phone = prompt("Enter your phone number:");
+                if (phone) {
+                    alert(`Thank you ${name}! We will contact you at ${phone} regarding ${productName}.`);
+                    // In a real application, you would send this data to a server
+                }
+            }
+        }
+
+        // Contact form handler
+          // Contact form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Create WhatsApp formatted message
+        const whatsappMessage =
+            "New Contact Form Message:%0A%0A" +
+            "Name: " + name + "%0A" +
+            "Email: " + email + "%0A" +
+            "Message: " + message;
+
+        const phoneNumber = "919352470085"; // India country code added
+        const whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + whatsappMessage;
+
+        // Open WhatsApp
+        window.open(whatsappURL, "_blank");
+
+        // Show success message
+        alert("Thank you " + name + "! Redirecting you to WhatsApp.");
+
+        // Reset form
+        this.reset();
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // Initialize product cards on page load
+    document.addEventListener('DOMContentLoaded', generateProductCards);
+</script>
+</body>
 </html>
