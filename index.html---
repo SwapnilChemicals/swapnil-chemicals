@@ -1,1 +1,854 @@
 
+<!DOCTYPE html>
+<!-- KUNAL JAIN CREATING SWAPNIL CHEMICALS LANDING PAGE WEBSITE 08-02-26 -->
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Swapnil Chemicals</title>
+      <!-- Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+      <!-- CSS USED FROM HERE  -->
+      <style>
+         :root{
+         --bg0:#060814;
+         --bg1:#0A1022;
+         --glass: rgba(255,255,255,.07);
+         --glass2: rgba(255,255,255,.10);
+         --stroke: rgba(255,255,255,.14);
+         --text: rgba(255,255,255,.93);
+         --muted: rgba(255,255,255,.72);
+         --shadow: 0 22px 70px rgba(0,0,0,.50);
+         --shadow2: 0 12px 34px rgba(0,0,0,.32);
+         --r14: 14px;
+         --r18: 18px;
+         --r24: 24px;
+         --a:#5B7CFF;
+         --b:#22D3EE;
+         --c:#A78BFA;
+         --good:#34D399;
+         --warn:#FBBF24;
+         --danger:#FB7185;
+         /* ✅ anchor offset (auto updated by JS) */
+         --nav-offset: 92px;
+         }
+         *{box-sizing:border-box}
+         html{
+         scroll-behavior:smooth;
+         scroll-padding-top: var(--nav-offset);
+         }
+         body{
+         margin:0;
+         font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+         color: var(--text);
+         background:
+         radial-gradient(1200px 640px at 12% 16%, rgba(91,124,255,.30), transparent 60%),
+         radial-gradient(1100px 760px at 86% 22%, rgba(34,211,238,.20), transparent 58%),
+         radial-gradient(900px 720px at 70% 90%, rgba(167,139,250,.18), transparent 60%),
+         linear-gradient(180deg, var(--bg0), var(--bg1));
+         overflow-x:hidden;
+         }
+         /* ✅ FIX: anchor landing for sticky nav */
+         #products, #contact { scroll-margin-top: var(--nav-offset); }
+         /* subtle animated aura */
+         .aura{
+         position:fixed;
+         inset:-240px;
+         pointer-events:none;
+         background:
+         radial-gradient(520px 260px at 20% 30%, rgba(34,211,238,.10), transparent 70%),
+         radial-gradient(520px 260px at 80% 40%, rgba(91,124,255,.10), transparent 70%),
+         radial-gradient(520px 260px at 55% 85%, rgba(167,139,250,.10), transparent 70%);
+         filter: blur(22px);
+         opacity:.95;
+         animation: floaty 14s ease-in-out infinite alternate;
+         }
+         @keyframes floaty{
+         from{ transform: translate3d(-12px,-12px,0) scale(1); }
+         to{ transform: translate3d(12px,12px,0) scale(1.05); }
+         }
+         /* .wrap{
+         width:min(1240px, 92vw);
+         margin:0 auto;
+         position:relative;
+         z-index:1;
+         } */
+         .wrap {
+         width: 100%; /* Change this line from 80% to 100% */
+         margin: 0 auto;
+         position: relative;
+         z-index: 1;
+         }
+         /* Top strip */
+         .top-strip{
+         display:flex;
+         gap:10px;
+         flex-wrap:wrap;
+         justify-content:center;
+         align-items:center;
+         padding: 10px 12px;
+         border-bottom: 1px solid rgba(255,255,255,.08);
+         background: rgba(0,0,0,.22);
+         backdrop-filter: blur(12px);
+         -webkit-backdrop-filter: blur(12px);
+         font-size: 13px;
+         color: var(--muted);
+         }
+         .chip{
+         display:inline-flex;
+         align-items:center;
+         gap:10px;
+         padding: 8px 12px;
+         border-radius: 999px;
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(255,255,255,.06);
+         }
+         .dot{
+         width:9px;height:9px;border-radius:999px;
+         background: linear-gradient(90deg, var(--b), var(--a));
+         box-shadow: 0 0 0 6px rgba(34,211,238,.10);
+         }
+         /* Nav */
+         .nav{
+         position: sticky;
+         top: 0;
+         z-index: 50;
+         background: rgba(6,8,20,.58);
+         backdrop-filter: blur(16px);
+         -webkit-backdrop-filter: blur(16px);
+         border-bottom: 1px solid rgba(255,255,255,.10);
+         }
+         .nav-inner{
+         display:flex;
+         justify-content:space-between;
+         align-items:center;
+         padding: 12px 0;
+         gap:12px;
+         }
+         .brand{
+         display:flex;
+         align-items:center;
+         gap: 12px;
+         min-width: 250px;
+         }
+         .logo{
+         width:44px;height:44px;border-radius: 12px;
+         object-fit: cover;
+         border: 1px solid rgba(255,255,255,.16);
+         background: rgba(255,255,255,.06);
+         box-shadow: 0 14px 30px rgba(0,0,0,.22);
+         }
+         .brand-title{
+         display:flex;
+         flex-direction:column;
+         line-height:1.05;
+         }
+         .brand-title b{font-weight:800; letter-spacing:.2px;}
+         .brand-title small{color: var(--muted); font-size: 12px; margin-top:2px}
+         .nav-links{
+         display:flex;
+         gap: 10px;
+         flex-wrap:wrap;
+         justify-content:flex-end;
+         }
+         .btn, .link{
+         display:inline-flex;
+         align-items:center;
+         justify-content:center;
+         gap:10px;
+         text-decoration:none;
+         color: rgba(255,255,255,.86);
+         font-weight: 700;
+         font-size: 13px;
+         padding: 10px 12px;
+         border-radius: 12px;
+         border: 1px solid rgba(255,255,255,.10);
+         background: rgba(255,255,255,.04);
+         transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+         cursor:pointer;
+         user-select:none;
+         }
+         .btn:hover, .link:hover{
+         transform: translateY(-2px);
+         background: rgba(255,255,255,.08);
+         border-color: rgba(255,255,255,.18);
+         }
+         .btn.primary, .link.primary{
+         border:none;
+         color:#06101a;
+         background: linear-gradient(90deg, var(--a), var(--b));
+         box-shadow: 0 12px 30px rgba(34,211,238,.16);
+         }
+         .btn.ghost{
+         background: rgba(0,0,0,.18);
+         border: 1px solid rgba(255,255,255,.14);
+         }
+         /* Hero */
+         header{ padding: 22px 0 10px; }
+         .hero{
+         border-radius: var(--r24);
+         border: 1px solid rgba(255,255,255,.12);
+         background: linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
+         box-shadow: var(--shadow);
+         overflow:hidden;
+         position:relative;
+         }
+         .hero::before{
+         content:"";
+         position:absolute;
+         inset:-2px;
+         background:
+         radial-gradient(950px 320px at 12% 0%, rgba(34,211,238,.22), transparent 65%),
+         radial-gradient(950px 320px at 88% 0%, rgba(91,124,255,.22), transparent 65%);
+         pointer-events:none;
+         }
+         .hero-inner{
+         position:relative;
+         z-index:1;
+         display:grid;
+         grid-template-columns: 1.15fr .85fr;
+         gap: 18px;
+         padding: 26px;
+         align-items:stretch;
+         }
+         .hero h1{
+         font-family: "DM Serif Display", serif;
+         font-weight: 400;
+         margin: 4px 0 10px;
+         font-size: clamp(34px, 4.4vw, 54px);
+         letter-spacing:.3px;
+         }
+         .hero p{
+         margin: 0 0 16px;
+         color: rgba(255,255,255,.85);
+         font-size: 15px;
+         line-height: 1.7;
+         }
+         .hero-actions{
+         display:flex;
+         gap:10px;
+         flex-wrap:wrap;
+         margin-top: 8px;
+         }
+         .kpis{
+         display:grid;
+         grid-template-columns: repeat(3, minmax(0,1fr));
+         gap: 10px;
+         margin-top: 14px;
+         }
+         .kpi{
+         padding: 12px;
+         border-radius: 14px;
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(0,0,0,.20);
+         box-shadow: var(--shadow2);
+         }
+         .kpi b{display:block; font-size: 14px}
+         .kpi span{color: var(--muted); font-size: 12px}
+         .info{
+         padding: 16px;
+         border-radius: var(--r18);
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(0,0,0,.22);
+         box-shadow: var(--shadow2);
+         }
+         .info h3{
+         margin: 0 0 12px;
+         font-size: 14px;
+         letter-spacing: .2px;
+         color: rgba(255,255,255,.90);
+         }
+         .info-row{
+         display:flex;
+         justify-content:space-between;
+         gap: 12px;
+         padding: 10px 10px;
+         border-radius: 12px;
+         border: 1px solid rgba(255,255,255,.10);
+         background: rgba(255,255,255,.05);
+         font-size: 13px;
+         color: var(--muted);
+         margin-bottom: 10px;
+         }
+         .info-row b{color: rgba(255,255,255,.92)}
+         .info-row:last-child{margin-bottom:0}
+         /* Sections */
+         main{ padding: 14px 0 60px; }
+         .section{ margin-top: 18px; }
+         .section-head{
+         display:flex;
+         justify-content:space-between;
+         align-items:flex-end;
+         gap: 12px;
+         margin: 16px 0 12px;
+         }
+         .section-head h2{
+         margin:0;
+         font-size: 20px;
+         letter-spacing:.2px;
+         }
+         .section-head p{
+         margin:0;
+         color: var(--muted);
+         font-size: 13px;
+         }
+         /* Tools bar */
+         .tools{
+         display:flex;
+         gap: 10px;
+         flex-wrap:wrap;
+         align-items:center;
+         justify-content:space-between;
+         margin: 12px 0 16px;
+         padding: 12px;
+         border-radius: var(--r18);
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(255,255,255,.05);
+         }
+         .search{
+         display:flex;
+         align-items:center;
+         gap:10px;
+         flex: 1 1 320px;
+         }
+         .search input{
+         width:100%;
+         padding: 11px 12px;
+         border-radius: 12px;
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(0,0,0,.18);
+         color: var(--text);
+         outline:none;
+         font-weight: 600;
+         }
+         .search input::placeholder{ color: rgba(255,255,255,.55); font-weight:600; }
+         .filters{
+         display:flex;
+         gap:8px;
+         flex-wrap:wrap;
+         justify-content:flex-end;
+         flex: 1 1 320px;
+         }
+         .pill{
+         padding: 9px 12px;
+         border-radius: 999px;
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(0,0,0,.16);
+         color: rgba(255,255,255,.84);
+         font-weight: 800;
+         font-size: 12px;
+         cursor:pointer;
+         transition: transform .18s ease, background .18s ease, border-color .18s ease;
+         }
+         .pill:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.20); }
+         .pill.active{
+         border:none;
+         color:#06101a;
+         background: linear-gradient(90deg, var(--a), var(--b));
+         }
+         /* Grid cards */
+         .grid{
+         display:grid;
+         grid-template-columns: repeat(12, 1fr);
+         gap: 18px;
+         }
+         .card{
+         grid-column: span 3;
+         border-radius: var(--r18);
+         border: 1px solid rgba(255,255,255,.12);
+         background: rgba(255,255,255,.06);
+         box-shadow: 0 14px 36px rgba(0,0,0,.25);
+         overflow:hidden;
+         position:relative;
+         transition: transform .2s ease, border-color .2s ease, background .2s ease;
+         }
+         .card:hover{
+         transform: translateY(-7px);
+         border-color: rgba(255,255,255,.22);
+         background: rgba(255,255,255,.08);
+         }
+         .thumb{
+         width:100%;
+         aspect-ratio: 4/3;
+         object-fit: cover;
+         display:block;
+         background: rgba(255,255,255,.05);
+         transform: scale(1.02);
+         transition: transform .35s ease;
+         }
+         .card:hover .thumb{ transform: scale(1.08); }
+         .badge{
+         position:absolute;
+         top: 12px;
+         left: 12px;
+         padding: 7px 10px;
+         border-radius: 999px;
+         font-size: 12px;
+         font-weight: 900;
+         color: rgba(255,255,255,.92);
+         border: 1px solid rgba(255,255,255,.16);
+         background: rgba(0,0,0,.22);
+         backdrop-filter: blur(10px);
+         -webkit-backdrop-filter: blur(10px);
+         }
+         .badge.good{ box-shadow: 0 0 0 6px rgba(52,211,153,.10); }
+         .badge.hot{ box-shadow: 0 0 0 6px rgba(251,191,36,.10); }
+         .card-body{ padding: 14px 14px 16px; }
+         .card-body h3{
+         margin: 2px 0 8px;
+         font-size: 15px;
+         letter-spacing: .2px;
+         font-weight: 900;
+         }
+         .meta{
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap: 10px;
+         color: var(--muted);
+         font-size: 13px;
+         }
+         .price{
+         font-weight: 900;
+         color: rgba(255,255,255,.92);
+         padding: 6px 10px;
+         border-radius: 999px;
+         border: 1px solid rgba(255,255,255,.14);
+         background: rgba(0,0,0,.18);
+         white-space:nowrap;
+         }
+         /* Modal */
+         .modal{
+         position: fixed;
+         inset: 0;
+         display:none;
+         align-items:center;
+         justify-content:center;
+         padding: 18px;
+         z-index: 200;
+         background: rgba(0,0,0,.55);
+         backdrop-filter: blur(10px);
+         -webkit-backdrop-filter: blur(10px);
+         }
+         .modal.open{ display:flex; }
+         .modal-card{
+         width: min(960px, 96vw);
+         border-radius: var(--r24);
+         border: 1px solid rgba(255,255,255,.14);
+         background: rgba(10,16,34,.85);
+         box-shadow: var(--shadow);
+         overflow:hidden;
+         display:grid;
+         grid-template-columns: 1fr 1fr;
+         }
+         .modal-img{
+         width:100%;
+         height:100%;
+         object-fit: cover;
+         background: rgba(255,255,255,.06);
+         min-height: 320px;
+         }
+         .modal-body{
+         padding: 18px;
+         display:flex;
+         flex-direction:column;
+         gap: 10px;
+         }
+         .modal-body h3{
+         margin: 0;
+         font-size: 22px;
+         letter-spacing:.2px;
+         }
+         .modal-body p{
+         margin:0;
+         color: var(--muted);
+         line-height:1.65;
+         font-size: 14px;
+         }
+         .modal-row{
+         display:flex;
+         gap: 10px;
+         flex-wrap:wrap;
+         align-items:center;
+         margin-top: 6px;
+         }
+         .close{
+         margin-left:auto;
+         border-radius: 12px;
+         padding: 10px 12px;
+         border: 1px solid rgba(255,255,255,.14);
+         background: rgba(255,255,255,.06);
+         color: rgba(255,255,255,.90);
+         font-weight: 900;
+         cursor:pointer;
+         }
+         /* Footer */
+         footer{
+         border-top: 1px solid rgba(255,255,255,.10);
+         color: var(--muted);
+         text-align:center;
+         padding: 18px 0 26px;
+         font-size: 13px;
+         }
+         /* Responsive */
+         @media (max-width: 980px){
+         .hero-inner{ grid-template-columns: 1fr; }
+         .kpis{ grid-template-columns: 1fr; }
+         .card{ grid-column: span 6; }
+         .modal-card{ grid-template-columns: 1fr; }
+         }
+         @media (max-width: 560px){
+         .brand{min-width:auto}
+         .nav-links{justify-content:flex-start}
+         .card{ grid-column: span 12; }
+         .tools{ gap: 12px; }
+         .filters{ justify-content:flex-start; }
+         }
+      </style>
+   </head>
+   <!-- HTML USED FROM HERE  -->
+   <body>
+      <div class="aura"></div>
+      <div class="top-strip">
+         <!-- <span class="chip"><span class="dot"></span> Manufacturers & marketers of cleaning products</span> -->
+         <span class="chip"><span class="dot"></span> Manufacturers & marketers of automobile cleaning products</span>
+         <span class="chip">Jaipur • Bulk & Retail</span>
+         <span class="chip">Quality • Value • Consistency</span>
+      </div>
+      <!-- Sticky Navigation -->
+      <div class="nav">
+         <div class="wrap nav-inner">
+            <div class="brand">
+               <!-- ✅ Use relative path (not D:\) -->
+               <img class="logo" src="SC Logo.jpg" alt="Swapnil Chemicals Logo">
+               <div class="brand-title">
+                  <b>Swapnil Chemicals</b>
+                  <!-- <small>48 Govind Nagar, Manyawas, Jaipur</small> -->
+               </div>
+            </div>
+            <div class="nav-links">
+               <a class="link" href="#products">Products</a>
+               <a class="link" href="#contact">Contact</a>
+               <a class="link primary" href="tel:+919352470085">Call Now</a>
+            </div>
+         </div>
+      </div>
+      <!-- HERO -->
+      <header class="wrap">
+         <section class="hero">
+            <div class="hero-inner">
+               <div>
+                  <!-- <h1>Cleaning that feels premium.</h1>
+                     <p>
+                       Swapnil Chemicals manufactures and markets cleaning products with a focus on
+                       performance, shine, and value. Perfect for vehicles, homes, shops and bulk supply.
+                     </p> -->
+                  <div class="hero-actions">
+                     <a class="btn primary" href="#products">Explore Products</a>
+                     <a class="btn ghost" href="https://wa.me/919352470085" target="_blank" rel="noopener">WhatsApp</a>
+                  </div>
+                  <div class="kpis">
+                     <div class="kpi"><b>Reliable Quality</b><span>Consistent formulation</span></div>
+                     <div class="kpi"><b>Competitive Pricing</b><span>Best value range</span></div>
+                     <div class="kpi"><b>Bulk Orders</b><span>Business supply support</span></div>
+                  </div>
+               </div>
+               <!-- Contact section -->
+               <aside class="info" id="contact">
+                  <h3>Business Details</h3>
+                  <div class="info-row"><span>Proprietor</span><b>Gajendra Jain</b></div>
+                  <div class="info-row">
+                     <span>Phone</span><b><a href="tel:9352470085" style="color: inherit; text-decoration: none;">9352470085</a></b>
+                  </div>
+                  <!-- <div class="info-row"><span>Alt Phone</span><b>9024598298</b></div> -->
+                  <div class="info-row"><span>GST No.</span><b>08CIJPS1734A1ZE</b></div>
+                  <!-- <div class="info-row"><span>Email</span><b>swapnilchemicals10@gmail.com</b></div> -->
+                  <div class="info-row"><span>Email</span><b><a href="https://mail.google.com/mail/?view=cm&fs=1&to=swapnilchemicals10@gmail.com"
+                     target="_blank"style="color: inherit; text-decoration: none;">swapnilchemicals10@gmail.com</a></b></div>
+                  <div class="info-row"><span>MSME</span><b>MSME/2020/6194</b></div>
+                  <div class="info-row"><span>Udyam</span><b>UDYAM-RJ-17-0022468</b></div>
+                  <div class="info-row"><span>BRN</span><b>8005220072000968</b></div>
+               </aside>
+            </div>
+         </section>
+      </header>
+      <!-- PRODUCTS -->
+      <main class="wrap">
+         <section class="section" id="products">
+            <div class="section-head">
+               <div>
+                  <h2>Our Products</h2>
+                  <!-- <p>Search + filter + product popup</p> -->
+               </div>
+               <!-- <p>Prices in INR</p> -->
+            </div>
+            <div class="tools">
+               <div class="search">
+                  <input id="searchInput" type="text" placeholder="Search Products" />
+               </div>
+               <div class="filters" aria-label="Category filters">
+                  <button class="pill active" data-filter="all">All</button>
+                  <button class="pill" data-filter="car">Car Care</button>
+                  <button class="pill" data-filter="home">Home Care</button>
+               </div>
+            </div>
+            <div class="grid" id="productGrid">
+               <!-- Dashboard Polish -->
+               <article class="card" data-name="dashboard polish" data-category="car" data-price="180/Lt" data-desc="Gives shine and protection to dashboards and interior surfaces.">
+                  <span class="badge good">Best Seller</span>
+                  <img class="thumb" src="Dashboard Polish.jpg" alt="Dashboard Polish">
+                  <div class="card-body">
+                     <h3>Dashboard Polish</h3>
+                     <div class="meta">
+                        <span>Shine & protection</span>
+                        <span class="price">Rs 180/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Tyre Polish -->
+               <article class="card" data-name="tyre polish" data-category="car" data-price="110/Lt" data-desc="Deep black finish with long-lasting gloss for tyres.">
+                  <span class="badge hot">Popular</span>
+                  <img class="thumb" src="Tyre Polish.jpg" alt="Tyre Polish">
+                  <div class="card-body">
+                     <h3>Tyre Polish</h3>
+                     <div class="meta">
+                        <span>Deep black finish</span>
+                        <span class="price">Rs 110/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Car Foaming Wash -->
+               <article class="card" data-name="car foaming wash" data-category="car" data-price="50/Lt" data-desc="Rich foam action that lifts dirt gently and cleans effectively.">
+                  <img class="thumb" src="Car Foaming Wash.jpg" alt="Car Foaming Wash">
+                  <div class="card-body">
+                     <h3>Car Foaming Wash</h3>
+                     <div class="meta">
+                        <span>Rich foam action</span>
+                        <span class="price">Rs 50/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Glass Cleaner -->
+               <article class="card" data-name="glass cleaner" data-category="car" data-price="60/Lt" data-desc="Streak-free glass cleaner that removes dirt, dust, and fingerprints easily.">
+                  <img class="thumb" src="Glass Cleaner.jpg" alt="Glass Cleaner">
+                  <div class="card-body">
+                     <h3>Glass Cleaner</h3>
+                     <div class="meta">
+                        <span>Streak-free shine</span>
+                        <span class="price">Rs 60/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Interior Cleaner -->
+               <article class="card" data-name="interior cleaner" data-category="cleaning" data-price="110/Lt" data-desc="Specially formulated for thorough interior cleaning and conditioning.">
+                   <img class="thumb" src="Interior Cleaner.jpg" alt="Interior Cleaner">
+                  <div class="card-body">
+                     <h3>Interior Cleaner</h3>
+                     <div class="meta">
+                        <span>Deep Interior Cleaning</span>
+                        <span class="price">Rs 110/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Handcare -->
+               <!-- <article class="card" data-name="handcare hand wash" data-category="home" data-price="100" data-desc="Gentle hand wash for daily use. Fresh and effective cleaning.">
+                  <img class="thumb" src="Handcare.jpg" alt="Handcare">
+                  <div class="card-body">
+                    <h3>Handcare</h3>
+                    <div class="meta">
+                      <span>Gentle clean</span>
+                      <span class="price">Rs 100/Lt</span>
+                    </div>
+                  </div>
+                  </article> -->
+               <!-- Dishwash -->
+               <article class="card" data-name="dishwash" data-category="home" data-price="80/Lt" data-desc="Grease cutting dishwash formula for utensils and kitchen cleaning.">
+                   <img class="thumb" src="Dishwash.jpg" alt="Dishwash">
+                  <div class="card-body">
+                     <h3>Dishwash</h3>
+                     <div class="meta">
+                        <span>Grease cutting</span>
+                        <span class="price">Rs 80/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Detergent -->
+               <article class="card" data-name="detergent" data-category="home" data-price="110/Lt" data-desc="Strong wash detergent for effective cleaning.">
+                   <img class="thumb" src="Detergent.jpg" alt="Detergent">
+                  <div class="card-body">
+                     <h3>Detergent</h3>
+                     <div class="meta">
+                        <span>Strong wash</span>
+                        <span class="price">Rs 110/Lt</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Foaming Gun -->
+               <article class="card" data-name="foaming_gun" data-category="car" data-price="1600" data-desc="High-pressure foam sprayer for deep and uniform cleaning">
+                   <img class="thumb" src="Foaming Gun.jpg" alt="Foaming Gun">
+                  <div class="card-body">
+                     <h3>Foaming Gun</h3>
+                     <div class="meta">
+                        <span>High Pressure Foaming Gun</span>
+                        <span class="price">Rs 1600</span>
+                     </div>
+                  </div>
+               </article>
+               <!-- Micro Towel -->
+               <article class="card" data-name="micro_towel" data-category="car" data-price="60/80/120" data-desc="Ultra-soft microfiber towel for scratch-free wiping and polishing">
+                  <img class="thumb" src="Micro Towel.jpg" alt="Micro Towel">
+                  <div class="card-body">
+                     <h3>Micro Towel</h3>
+                     <div class="meta">
+                        <span>Ultra soft Micro Towel</span>
+                        <span class="price">Rs 60/80/120</span>
+                     </div>
+                  </div>
+               </article>
+            </div>
+         </section>
+      </main>
+      <!-- <footer>-->
+      <!-- 13-02-26 -->
+      <footer style="background-color: #0D1A26; color: #ffffff; padding: 30px 0;">
+         <div class="wrap" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h2 style="margin: 10px 0;">Contact Us</h2>
+            <!-- Phone -->
+            <p style="margin: 5px 0;">
+               Phone: 
+               <a href="tel:9352470085" style="color: #ffffff; text-decoration: none;">
+               9352470085
+               </a>
+            </p>
+            <!-- Email -->
+            <p style="margin: 5px 0;">
+               Email: 
+               <a href="https://mail.google.com/mail/?view=cm&fs=1&to=swapnilchemicals10@gmail.com"
+                  target="_blank"
+                  style="color: #ffffff; text-decoration: none;">
+               swapnilchemicals10@gmail.com
+               </a>
+            </p>
+            <!-- Google Pay Payment -->
+            <p style="margin: 20px 0; width: 50%;">
+               <a href="upi://pay?pa=boism-9352470085@boi&pn=Swapnil%20Chemicals&cu=INR"
+                  style="display: block; width: fit-content; margin-left: auto;">
+               <img class="thumb" src="Google Pay Logo.jpg" alt="Google Pay" alt="Pay with Google Pay" style="height: 35px; cursor: pointer;">
+               </a>
+            </p>
+            <p style="margin: 10px 0;">
+               &copy; 2026 Swapnil Chemicals. All rights reserved.
+            </p>
+         </div>
+      </footer>
+      <!-- Modal -->
+      <div class="modal" id="modal" aria-hidden="true">
+         <div class="modal-card" role="dialog" aria-modal="true" aria-label="Product details">
+            <img class="modal-img" id="modalImg" src="" alt="">
+            <div class="modal-body">
+               <div style="display:flex; gap:10px; align-items:center;">
+                  <h3 id="modalTitle">Product</h3>
+                  <button class="close" id="modalClose" type="button">Close</button>
+               </div>
+               <p id="modalDesc"></p>
+               <div class="modal-row">
+                  <span class="price" id="modalPrice">Rs 0</span>
+                  <a class="btn primary" id="modalCall" href="tel:9352470085">Call to Order</a>
+                  <a class="btn ghost" id="modalWA" href="https://wa.me/919352470085" target="_blank" rel="noopener">WhatsApp</a>
+               </div>
+               <p style="margin-top:6px; font-size:12px; color:rgba(255,255,255,.62);">
+               </p>
+            </div>
+         </div>
+      </div>
+      <!-- JS USED FROM HERE  --> 
+      <script>
+         // ✅ Set nav offset dynamically (anchor clicks perfect)
+         (function () {
+           function setNavOffset(){
+             const nav = document.querySelector('.nav');
+             if(!nav) return;
+             const h = Math.ceil(nav.getBoundingClientRect().height);
+             document.documentElement.style.setProperty('--nav-offset', (h + 16) + 'px');
+           }
+           window.addEventListener('load', setNavOffset);
+           window.addEventListener('resize', setNavOffset);
+           if (document.fonts && document.fonts.ready) {
+             document.fonts.ready.then(setNavOffset).catch(()=>{});
+           }
+         })();
+         
+         // Products: filter + search
+         const searchInput = document.getElementById('searchInput');
+         const pills = Array.from(document.querySelectorAll('.pill'));
+         const cards = Array.from(document.querySelectorAll('#productGrid .card'));
+         
+         let activeFilter = "all";
+         
+         function applyFilters(){
+           const q = (searchInput.value || "").trim().toLowerCase();
+           cards.forEach(card => {
+             const name = (card.dataset.name || "").toLowerCase();
+             const cat  = (card.dataset.category || "all").toLowerCase();
+         
+             const matchText = !q || name.includes(q);
+             const matchCat  = (activeFilter === "all") || (cat === activeFilter);
+         
+             card.style.display = (matchText && matchCat) ? "" : "none";
+           });
+         }
+         
+         pills.forEach(p => {
+           p.addEventListener('click', () => {
+             pills.forEach(x => x.classList.remove('active'));
+             p.classList.add('active');
+             activeFilter = p.dataset.filter;
+             applyFilters();
+           });
+         });
+         
+         searchInput.addEventListener('input', applyFilters);
+         
+         // Modal popup
+         const modal = document.getElementById('modal');
+         const modalImg = document.getElementById('modalImg');
+         const modalTitle = document.getElementById('modalTitle');
+         const modalDesc = document.getElementById('modalDesc');
+         const modalPrice = document.getElementById('modalPrice');
+         const modalClose = document.getElementById('modalClose');
+         
+         function openModal(card){
+           const img = card.querySelector('img');
+           modalImg.src = img ? img.src : "";
+           modalImg.alt = img ? img.alt : "Product";
+           modalTitle.textContent = card.querySelector('h3')?.textContent || "Product";
+           modalDesc.textContent = card.dataset.desc || "Product details coming soon.";
+           modalPrice.textContent = "Rs " + (card.dataset.price || "0");
+         
+           modal.classList.add('open');
+           modal.setAttribute('aria-hidden', 'false');
+           document.body.style.overflow = "hidden";
+         }
+         
+         function closeModal(){
+           modal.classList.remove('open');
+           modal.setAttribute('aria-hidden', 'true');
+           document.body.style.overflow = "";
+         }
+         
+         cards.forEach(card => {
+           card.addEventListener('click', () => openModal(card));
+         });
+         
+         modalClose.addEventListener('click', closeModal);
+         modal.addEventListener('click', (e) => {
+           if(e.target === modal) closeModal();
+         });
+         window.addEventListener('keydown', (e) => {
+           if(e.key === "Escape") closeModal();
+         });
+      </script>
+   </body>
+</html>
