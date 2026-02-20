@@ -44,6 +44,16 @@
          .contact-icon:hover {
          transform: scale(1.1);
          }
+         /* custom 20-02-26 */
+        #scrollToTop {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        width: 50px; /* Set a fixed width */
+        height: 50px; /* Set a fixed height */
+        border-radius: 50%; /* makes the button circular */
+        display: flex; /* Centering flexbox */
+        align-items: center; /* Centering vertically */
+        justify-content: center; /* Centering horizontally */
+    }
       </style>
    </head>
    <body class="min-h-screen bg-gray-50 text-gray-800">
@@ -280,6 +290,10 @@
             </div>
          </div>
       </section>
+       <!-- 20-02-26 for scrolling option -->
+<button id="scrollToTop" class="fixed bottom-4 right-4 bg-blue-600 text-white p-3 hidden">
+    <i class="fas fa-arrow-up"></i>
+</button>
       <!-- Footer -->
       <footer class="bg-blue-900 text-white py-8">
          <div class="container mx-auto px-4">
@@ -410,13 +424,27 @@
              }
          });
          });
+
+         // custom K for scrolling 20-02-26
+    window.onscroll = function() {
+        const scrollToTopButton = document.getElementById('scrollToTop');
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopButton.classList.remove('hidden');
+        } else {
+            scrollToTopButton.classList.add('hidden');
+        }
+    };
+
+    // Smoothly scroll to the top when the button is clicked
+    document.getElementById('scrollToTop').onclick = function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
          
          // Initialize product cards on page load
          document.addEventListener('DOMContentLoaded', generateProductCards);
       </script>
    </body>
 </html>
-
-
-
-
