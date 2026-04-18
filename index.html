@@ -924,7 +924,7 @@
                     unit: "per piece",
                     hasLtOptions: true,
                     qtyOptions: [5, 10, 20],
-                    qtyLabel: "pcs",
+                    qtyLabel: " pcs",
                 },
                 {
                     id: 8,
@@ -935,7 +935,7 @@
                     unit: "per piece",
                     hasLtOptions: true,
                     qtyOptions: [5, 10, 20],
-                    qtyLabel: "pcs",
+                    qtyLabel: " pcs",
                 },
                 {
                     id: 9,
@@ -946,7 +946,7 @@
                     unit: "per piece",
                     hasLtOptions: true,
                     qtyOptions: [5, 10, 20],
-                    qtyLabel: "pcs",
+                    qtyLabel: " pcs",
                 },
             ];
 
@@ -1066,61 +1066,32 @@ function createProductCard(product) {
     `;
 }
 
-
-
-// function buildUpiLink(amount, productName, lt, qtyLabel = 'Lt') {
-//     const note = encodeURIComponent(`${productName} ${lt}${qtyLabel}`);
-//     const name = encodeURIComponent('Swapnil Chemicals');
-//     return `upi://pay?pa=boism-9352470085@boi&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
-// }
-
-// function selectQty(btn) {
-//     const card = btn.closest('.product-card');
-//     card.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
-//     btn.classList.add('active');
-
-//     const lt        = parseInt(btn.dataset.lt);
-//     const price     = parseInt(btn.dataset.price);
-//     const pName     = decodeURIComponent(btn.dataset.product);
-//     const qtyLabel  = btn.dataset.qtyLabel || 'Lt';
-//     const total     = price * lt;
-
-//     const gpayBtn      = card.querySelector('[id^="gpay-btn-"]');
-//     const priceDisplay = card.querySelector('[id^="price-display-"]');
-
-//     if (priceDisplay) priceDisplay.textContent = `₹${total}`;
-
-//     if (gpayBtn) {
-//         gpayBtn.href = buildUpiLink(total, pName, lt, qtyLabel);
-//         gpayBtn.innerHTML = `
-//             <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" 
-//                  alt="GPay" 
-//                  style="height:20px; filter:brightness(0) invert(1);">
-//             Pay ₹${total} via GPay
-//         `;
-//     }
-// }
-
-
-
 // custom 18-04-26
 
-function buildUpiLink(amount, productName, lt, qtyLabel = 'Lt') {
-    const note = encodeURIComponent(`${productName} ${lt}${qtyLabel}`);
+function buildUpiLink(amount, productName, qty, qtyLabel = '') {
+
+    // 🔥 CLEAN LABEL FIX
+    const label = qtyLabel ? `${qty}${qtyLabel}` : '';
+
+    const note = encodeURIComponent(`${productName} ${label}`);
     const name = encodeURIComponent('Swapnil Chemicals');
+
     return `upi://pay?pa=boism-9352470085@boi&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
 }
 
+
+
 function selectQty(btn) {
     const card = btn.closest('.product-card');
+
     card.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    const lt        = parseInt(btn.dataset.lt);
+    const qty       = parseInt(btn.dataset.lt);
     const price     = parseInt(btn.dataset.price);
     const pName     = decodeURIComponent(btn.dataset.product);
-    const qtyLabel  = btn.dataset.qtyLabel || 'Lt';
-    const total     = price * lt;
+    const qtyLabel  = btn.dataset.qtyLabel || '';
+    const total     = price * qty;
 
     const gpayBtn      = card.querySelector('[id^="gpay-btn-"]');
     const priceDisplay = card.querySelector('[id^="price-display-"]');
@@ -1128,7 +1099,7 @@ function selectQty(btn) {
     if (priceDisplay) priceDisplay.textContent = `₹${total}`;
 
     if (gpayBtn) {
-        gpayBtn.href = buildUpiLink(total, pName, lt, qtyLabel);
+        gpayBtn.href = buildUpiLink(total, pName, qty, qtyLabel);
         gpayBtn.innerHTML = `
             <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" 
                  alt="GPay" 
@@ -1142,47 +1113,47 @@ function selectQty(btn) {
 
 
 
-            // ── Build UPI deep-link (amount locked, not editable by user) ──
-            // function buildUpiLink(amount, productName, lt) {
-            function buildUpiLink(amount, productName, lt, qtyLabel = 'Lt') {
-                // const note = encodeURIComponent(`${productName} ${lt}Lt`);
-                    const note = encodeURIComponent(`${productName} ${lt}${qtyLabel}`);
-                const name = encodeURIComponent('Swapnil Chemicals');
-                // am= locks the amount in GPay / any UPI app
-                return `upi://pay?pa=boism-9352470085@boi&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
-            }
+            // // ── Build UPI deep-link (amount locked, not editable by user) ──
+            // // function buildUpiLink(amount, productName, lt) {
+            // function buildUpiLink(amount, productName, lt, qtyLabel = 'Lt') {
+            //     // const note = encodeURIComponent(`${productName} ${lt}Lt`);
+            //         const note = encodeURIComponent(`${productName} ${lt}${qtyLabel}`);
+            //     const name = encodeURIComponent('Swapnil Chemicals');
+            //     // am= locks the amount in GPay / any UPI app
+            //     return `upi://pay?pa=boism-9352470085@boi&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
+            // }
 
-            // ── Called when a Lt pill is clicked ──
-            function selectQty(btn) {
-                // Find sibling buttons in the same card
-                const card = btn.closest('.product-card');
-                card.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+            // // ── Called when a Lt pill is clicked ──
+            // function selectQty(btn) {
+            //     // Find sibling buttons in the same card
+            //     const card = btn.closest('.product-card');
+            //     card.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
+            //     btn.classList.add('active');
 
-                const lt     = parseInt(btn.dataset.lt);
-                const price  = parseInt(btn.dataset.price);
-                const pName  = decodeURIComponent(btn.dataset.product);
-                const total  = price * lt;
+            //     const lt     = parseInt(btn.dataset.lt);
+            //     const price  = parseInt(btn.dataset.price);
+            //     const pName  = decodeURIComponent(btn.dataset.product);
+            //     const total  = price * lt;
 
-                // Find product id from the gpay-btn id inside the same card
-                const gpayBtn = card.querySelector('[id^="gpay-btn-"]');
-                const priceDisplay = card.querySelector('[id^="price-display-"]');
+            //     // Find product id from the gpay-btn id inside the same card
+            //     const gpayBtn = card.querySelector('[id^="gpay-btn-"]');
+            //     const priceDisplay = card.querySelector('[id^="price-display-"]');
 
-                if (priceDisplay) priceDisplay.textContent = `₹${total}`;
+            //     if (priceDisplay) priceDisplay.textContent = `₹${total}`;
 
-                if (gpayBtn) {
-                    gpayBtn.href        = buildUpiLink(total, pName, lt);
-                    gpayBtn.textContent = ''; // clear then rebuild
-                    // Rebuild inner content (img + text)
-                    const img = document.createElement('img');
-                    img.src = 'https://www.gstatic.com/instantbuy/svg/dark_gpay.svg';
-                    img.alt = 'GPay';
-                    img.style.height = '20px';
-                    img.style.filter = 'brightness(0) invert(1)';
-                    gpayBtn.appendChild(img);
-                    gpayBtn.appendChild(document.createTextNode(` Pay ₹${total} via GPay`));
-                }
-            }
+            //     if (gpayBtn) {
+            //         gpayBtn.href        = buildUpiLink(total, pName, lt);
+            //         gpayBtn.textContent = ''; // clear then rebuild
+            //         // Rebuild inner content (img + text)
+            //         const img = document.createElement('img');
+            //         img.src = 'https://www.gstatic.com/instantbuy/svg/dark_gpay.svg';
+            //         img.alt = 'GPay';
+            //         img.style.height = '20px';
+            //         img.style.filter = 'brightness(0) invert(1)';
+            //         gpayBtn.appendChild(img);
+            //         gpayBtn.appendChild(document.createTextNode(` Pay ₹${total} via GPay`));
+            //     }
+            // }
 
             // Function to render products
             function renderProducts() {
